@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+{include file="/head" /} 
+<body>
+{include file="/msg" /} 
+    <!-- Begin page -->
+    <div id="wrapper">
+        
+        <!-- ========== 导航 ========== -->
+        {include file="/nav" /} 
+                <!-- Sidebar -->
+                <div class="clearfix"></div>
+
+            </div>
+            <!-- Sidebar -left -->
+
+        </div>
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="page-title-box">
+                            <div class="row align-items-center">
+                                <div class="col-sm-6">
+                                    <h4 class="page-title">播放测试</h4>
+                                </div>
+                            </div> <!-- end row -->
+                        </div>
+                        <!-- end page-title -->
+
+                        <div class="row">
+                            <div class="col-xl-6">
+                                 <iframe class="video" src="{$htjx}" style="width:100%;height: 400px" frameborder="0" scrolling="no"></iframe>
+                                <!-- <div class="card m-b-30">
+                                    <div class="card-body" style="width: 100%">
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                            <iframe class="embed-responsive-item" src="{$htjx}"></iframe>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="col-xl-6">
+                                 <div class="card m-b-30">
+                                     <div class="card-body">
+                                        <form action="/user/video" method="post">
+                                        <div class="form-group">
+                                        <label for="exampleInputEmail1">视频链接</label>
+                                        <input name="url" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="https://v.qq.com/x/cover/mzc00200nx1hbcr/j0041h6t8nu.html">
+                                        <small id="emailHelp" class="form-text text-muted">填写视频链接即可播放</small>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary">解析</button>
+                                        </form>
+                                     </div>
+                                 </div>
+                            </div>  
+                        </div>
+                        <!-- end row -->
+                    </div>
+                    <!-- container-fluid -->
+
+                </div>
+                <!-- content -->
+
+                 {include file="/foot" /} 
+
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Right content here -->
+        <!-- ============================================================== -->
+
+    </div>
+    <!-- END wrapper -->
+
+    <!-- jQuery  -->
+    <script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/assets/js/metismenu.min.js"></script>
+    <script src="/static/assets/js/jquery.slimscroll.js"></script>
+    <script src="/static/assets/js/waves.min.js"></script>
+    <script src="/static/assets/pages/dashboard.init.js"></script>
+
+    <!-- App js -->
+    <script src="/static/assets/js/app.js"></script>
+
+</body>
+
+</html>

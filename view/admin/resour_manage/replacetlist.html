@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+    {include file="/head" /}
+    {include file="/nav" /}
+    <!-- END Sidebar -->
+        <style>
+        .a{
+            margin-top: 20px;
+        }
+        .search{
+            display: flex;
+            height: 50px;
+            width: 200px;
+            /*float: right;*/
+            justify-content: space-between;
+        }
+        .search input{
+            height: 60%;
+        }
+        </style>
+            <div class="main-content">
+
+                <div class="page-content">
+
+                    <!-- Page-Title -->
+                    <div class="page-title-box">
+                        <div class="container-fluid">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h4 class="page-title mb-1">替换列表</h4>
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">资源管理</a></li>
+                                    <li class="breadcrumb-item active">替换列表</li>
+                                    </ol>
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- end page title end breadcrumb -->
+    
+                    <div class="page-content-wrapper">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+            
+                                            <h4 class="header-title">替换列表</h4>
+                                            <p class="card-title-desc">如有重复资源在库内,替换会使用最后一次提交的数据<code>请详知</code>.
+                                            <a href="/api/index/tihuan/key/{$mykey}">一键清理</a>
+                                           
+                                            </p>
+                                            <form action="" method="post">
+                                            <div class="search">
+                                    
+                                                <input name="keyw" placeholder="名称">
+                                                <input type="submit" class="btn btn-primary btn-sm" style="width:25%" value="搜索" id="search">
+                                                
+                                            </div>
+                                            </form>
+                                            <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                                <thead>
+                                                <tr>
+                                                    <th>资源id</th>
+                                                    <th>提交id/名称</th>
+                                                    <th>名称</th>
+                                                    <th>原url</th>
+                                                    <th>添加时间</th>
+                                                    <th>状态</th>
+                                                    <th>操作</th>
+                                                </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                {volist name="list" id="data"}
+                                                <tr>
+                                                    <td><span class="badge badge-primary">{$data.id}</span></td>
+                                                    <td>{$data.uid}</td>
+                                                    <td>{$data.name}</td>
+                                                    <td>{$data.url}</td>
+                                                    <td><span class="badge badge-soft-primary">{$data.intime|date="Y-m-d H:i:s"}</span></td>
+                                                    <td>{eq name="$data.status" value="1"}<span class="badge badge-success">开启</span>{/eq}{eq name="$data.status" value="2"}<span class="badge badge-danger">停用</span>{/eq}</td>
+                                                    <td><a href="{:url('edit')}?id={$data.id}">编辑</a>  <a href="{:url('/admin/ResourManage/deletejk')}?id={$data.id}">删除</a></td>
+                                                </tr>
+                                                {/volist}
+                                                </tbody>
+                                                
+                                            </table>
+                                            {$list|raw}
+                                        </div>
+                                        
+                                    </div>
+                                </div> <!-- end col -->
+                            </div> <!-- end row -->
+            
+                         
+
+                        </div>
+                        <!-- end container-fluid -->
+                    </div> 
+                    <!-- end page-content-wrapper -->
+                </div>
+                <!-- End Page-content -->
+
+                
+        {include file="/footer"}
+        <!-- /Right-bar -->
+
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <!-- JAVASCRIPT -->
+        <script src="/static/adassets/libs/jquery/jquery.min.js"></script>
+        <script src="/static/adassets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/static/adassets/libs/metismenu/metisMenu.min.js"></script>
+        <script src="/static/adassets/libs/simplebar/simplebar.min.js"></script>
+        <script src="/static/adassets/libs/node-waves/waves.min.js"></script>
+
+        <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
+
+        <!-- datepicker -->
+        <script src="/static/adassets/libs/air-datepicker/js/datepicker.min.js"></script>
+        <script src="/static/adassets/libs/air-datepicker/js/i18n/datepicker.en.js"></script>
+
+        <!-- apexcharts -->
+        <script src="/static/adassets/libs/apexcharts/apexcharts.min.js"></script>
+
+        <script src="/static/adassets/libs/jquery-knob/jquery.knob.min.js"></script> 
+
+        <!-- Jq vector map -->
+        <script src="/static/adassets/libs/jqvmap/jquery.vmap.min.js"></script>
+        <script src="/static/adassets/libs/jqvmap/maps/jquery.vmap.usa.js"></script>
+
+        <script src="/static/adassets/js/pages/dashboard.init.js"></script>
+
+        <script src="/static/adassets/js/app.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('input[name="search"]').bind("input propertychange",function(event){
+                var txt = $('input[name="search"]').val();
+                $("table tbody tr").hide().filter(":contains('" + txt + "')").show();
+                })
+                $("ul.pagination li").addClass("page-item");
+                $("ul.pagination li a").addClass("page-link");
+                var page = $("ul.pagination li.active span").text();
+                $("ul.pagination li.active").html('<a class="page-link" href="#">'+page+'<span class="sr-only">(current)</span></a>');
+                $("ul.pagination li span").addClass("page-link");
+            });
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    {include file="/head" /} 
+
+    <body>
+{include file="/msg" /} 
+        <!-- Begin page -->
+        <div class="accountbg"></div>
+        <div class="home-btn d-none d-sm-block">
+                
+            </div>
+        <div class="wrapper-page">
+                <div class="card card-pages shadow-none">
+    
+                    <div class="card-body">
+
+                        <h5 class="font-18 text-center">账户注册</h5>
+    
+                        <form class="form-horizontal m-t-30" action="/user/login/reg" method="post">
+
+                            <div class="form-group">
+                                <div class="col-12">
+                                        <label>用户名</label>
+                                    <input class="form-control" name="username" type="username" required="" placeholder="长度为4-10个字符,不能有特殊字符">
+                                </div>
+                            </div>
+    
+                            <div class="form-group">
+                                <div class="col-12">
+                                        <label>密码</label>
+                                    <input class="form-control" name="password" type="password" required="" placeholder="请设置你的密码">
+                                </div>
+                            </div>
+    
+                            <div class="form-group">
+                                <div class="col-12">
+                                        <label>联系QQ</label>
+                                    <input class="form-control" name="qq" type="number" required="" placeholder="输入你常用的QQ号码">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-12">
+                                        <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                                <label class="custom-control-label font-weight-normal" for="customCheck1">I accept <a href="#" class="text-primary">Terms and Conditions</a></label>
+                                            </div>
+                                </div>
+                            </div>
+    
+                            <div class="form-group text-center m-t-20">
+                                <div class="col-12">
+                                    <button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">注册</button>
+                                </div>
+                            </div>
+    
+                            <div class="form-group mb-0 row">
+                                    <div class="col-12 m-t-10 text-center">
+                                        <a href="index.html" class="text-muted">已经有账号了?</a>
+                                    </div>
+                                </div>
+                        </form>
+                    </div>
+    
+                </div>
+            </div>
+        <!-- END wrapper -->
+        
+    </body>
+
+</html>

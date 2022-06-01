@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+{include file="/head" /}
+{include file="/nav" /}
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+
+                    <!-- Page-Title -->
+                    <div class="page-title-box">
+                        <div class="container-fluid">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h4 class="page-title mb-1">添加套餐</h4>
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="./index">套餐管理</a></li>
+                                    <li class="breadcrumb-item active">添加套餐</li>
+                                    </ol>
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- end page title end breadcrumb -->
+
+                    <div class="page-content-wrapper">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            
+                                            <h4 class="header-title">添加套餐</h4>
+                                            <p class="card-title-desc">修改完信息 <code>注意保存</code> 如有不生效请清理缓存</p>
+    
+                                            <div class="form-group row">
+                                                <label for="example-text-input" class="col-md-2 col-form-label">套餐名称</label>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" type="text"  name="name" placeholder="例如 包月套餐">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="example-search-input" class="col-md-2 col-form-label">价格</label>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" type="number"  name="price">
+                                                </div> 
+                                            </div>
+                                            
+                                            <div class="form-group row">
+                                                <label class="col-md-2 col-form-label">类型</label>
+                                                <div class="col-md-10">
+                                                    <select class="custom-select" id="dian" name="type">
+                                                        <option value="1">包点套餐</option>
+                                                        <option value="2">包月套餐</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group row" id="k">
+                                                <label for="example-url-input" class="col-md-2 col-form-label" id="textmonth">月/点</label>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" type="number"  name="fs" placeholder="套餐包含几月就填几 点数可自由设置">
+                                                </div>
+                                            </div>
+                                            <div  class="form-group row" id="limit">
+                                                
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="example-datetime-local-input" class="col-md-2 col-form-label">套餐介绍</label>
+                                                <div class="col-md-10">
+                                                    <textarea class="form-control" name="introduce" rows="10"><p class="font-14 mb-2"><i class="ti-check-box text-success mr-3"></i> 每日上限5万次 </p> 
+<p class="font-14 mb-2"><i class="ti-check-box text-success mr-3"></i> 即冲即用</p>
+<p class="font-14 mb-2"><i class="ti-check-box text-success mr-3"></i> 增加限制联系客服  </p>
+ <p class="font-14 mb-2"><i class="ti-check-box text-success mr-3"></i> 全天售后客服在线 </p> 
+<p class="font-14 mb-2"><i class="ti-check-box text-success mr-3"></i> 24小时资源审核</p></textarea>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group row">
+                                                <label class="col-md-2 col-form-label">是否启用</label>
+                                                <div class="col-md-10">
+                                                    <select class="custom-select" name="status">
+                                                        <option value="1">启用</option>
+                                                        <option value="2">关闭</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            
+                                           <button class="btn btn-primary" id="submit" type="button">
+                                            保存
+                                         </button> 
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end col -->
+                            </div>
+                            <!-- end row -->
+    
+                        </div>
+                        <!-- end container-fluid -->
+                    </div> 
+                    <!-- end page-content-wrapper -->
+                </div>
+                <!-- End Page-content -->
+
+                
+        {include file="/footer"}
+
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <!-- JAVASCRIPT -->
+        <script src="/static/adassets/libs/jquery/jquery.min.js"></script>
+        <script src="/static/adassets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/static/adassets/libs/metismenu/metisMenu.min.js"></script>
+        <script src="/static/adassets/libs/simplebar/simplebar.min.js"></script>
+        <script src="/static/adassets/libs/node-waves/waves.min.js"></script>
+
+        <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
+
+
+        <script src="/static/adassets/js/app.js"></script>
+        <script type="text/javascript" src="/static/assets/js/message.js"></script>
+        <script>
+            $(document).ready(function(){
+                    $("#submit").click(function(){
+                        $("#submit").html('<span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span>保存中...');
+                        var name  = $("input[name='name']").val();
+                        var price  = $("input[name='price']").val();
+                        var type  = $("select option:selected").val();
+                        var fs  = $("input[name='fs']").val();
+                        var introduce  = $("textarea[name='introduce']").val();
+                        var status  = $("select[name='status']").val();
+                        var limtsecond = $("input[name='limtsecond']").val();
+                        $.ajax({
+                          url:'/admin/SetMeal/add',
+                          type:'post',
+                          data:{
+                              name,
+                              price,
+                              type,
+                              limtsecond,
+                              fs,
+                              introduce,
+                              status,
+                          },
+                         success:function(data){
+                                $("#submit").html('保存');
+                                $.message({
+                                    message:''+data.msg+'',
+                                    type:'success',
+                                });
+                                //setTimeout(function(){ window.location.href= ''; }, 2000);
+                         }
+                        });
+                    });
+                    
+                    $("#dian").click(function(){
+                        var zhi = $("select option:selected").val();
+                        if(zhi == 1){
+                            $("#limit").html('');
+                            $("#textmonth").html('点数');
+                        }else{
+                            $("#limit").html('<label for="example-url-input" class="col-md-2 col-form-label" id="textmonth">限制</label><div class="col-md-10"><input class="form-control" type="number"  name="limtsecond" placeholder="限制每日调用次数 例如10000"></div>');
+                            $("#textmonth").html('月数'); 
+                        }
+                        
+                    });
+            });
+        </script>
+    </body>
+</html>

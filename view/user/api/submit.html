@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+{include file="/head" /} 
+<body>
+{include file="/msg" /} 
+    <!-- Begin page -->
+    <div id="wrapper">
+        
+        <!-- ========== 导航 ========== -->
+        {include file="/nav" /} 
+                <!-- Sidebar -->
+                <div class="clearfix"></div>
+
+            </div>
+            <!-- Sidebar -left -->
+
+        </div>
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+         <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="page-title-box">
+                            <div class="row align-items-center">
+                                <div class="col-sm-6">
+                                    <h4 class="page-title">资源提交</h4>
+                                </div>
+                               
+                            </div> <!-- end row -->
+                        </div>
+                        <!-- end page-title -->
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card m-b-30">
+                                    <div class="card-body">
+        
+                                        <h4 class="mt-0 header-title">资源库</h4>
+                                        <p class="sub-title">遇到不能播放或解析失败可尝试提交资源,如没有替换的新资源可留空</p>
+        
+                                        <form class="" method="post" action="/user/api/submit">
+                                            <div class="form-group">
+                                                <label>视频名称</label>
+                                                <input name="name" type="text" class="form-control" required placeholder="视频名称"/>
+                                            </div>
+        
+                                            <div class="form-group">
+                                                <label>视频链接</label>
+                                                <div>
+                                                    <input name="url" type="url" class="form-control" required
+                                                           parsley-type="url" placeholder="URL"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>资源链接</label>
+                                                <div>
+                                                    <input name="xurl" type="url" class="form-control" placeholder="URL"/>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <div>
+                                                    <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                                        提交
+                                                    </button>
+                                                    
+                                                </div>
+                                            </div>
+                                        </form>
+        
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+        
+                        </div> <!-- end row -->      
+
+                        
+                    </div>
+                    <!-- container-fluid -->
+
+                </div>
+                <!-- content -->
+                {include file="/foot" /} 
+
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Right content here -->
+        <!-- ============================================================== -->
+
+    </div>
+    <!-- END wrapper -->
+
+    <!-- jQuery  -->
+    <script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/assets/js/metismenu.min.js"></script>
+    <script src="/static/assets/js/jquery.slimscroll.js"></script>
+    <script src="/static/assets/js/waves.min.js"></script>
+
+
+    <script src="/static/assets/pages/dashboard.init.js"></script>
+
+    <!-- App js -->
+    <script src="/static/assets/js/app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+    {include file="/head" /}
+    {include file="/nav" /}
+    <!-- END Sidebar -->
+        <style>
+        .a{
+            margin-top: 20px;
+        }
+        </style>
+            <div class="main-content">
+
+                <div class="page-content">
+
+                    <!-- Page-Title -->
+                    <div class="page-title-box">
+                        <div class="container-fluid">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h4 class="page-title mb-1">资源审核</h4>
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">资源审核</a></li>
+                                    </ol>
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- end page title end breadcrumb -->
+    
+                    <div class="page-content-wrapper">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+            
+                                            <h4 class="header-title">替换列表</h4>
+                                            <p class="card-title-desc">通过后请在资源管理<code>查看</code>.
+                                           
+                                            </p>
+                                            
+                                            <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                                <thead>
+                                                <tr>
+                                                    <th>资源id</th>
+                                                    <th>提交id/名称</th>
+                                                    <th>名称</th>
+                                                    <th>原url</th>
+                                                    <th>新url</th>
+                                                    <th>添加时间</th>
+                                                    <th>状态</th>
+                                                    <th>操作</th>
+                                                </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                {volist name="list" id="data"}
+                                                <tr>
+                                                    <td><span class="badge badge-primary">{$data.id}</span></td>
+                                                    <td>{$data.uid}</td>
+                                                    <td>{$data.name}</td>
+                                                    <td>{$data.url}</td>
+                                                    <td>{$data.xurl}</td>
+                                                    <td><span class="badge badge-soft-primary">{$data.intime|date="Y-m-d H:i:s"}</span></td>
+                                                    <td><span class="badge badge-danger">未审核</span></td>
+                                                    <td><a href="" onclick="tg('./shenzy','{$data.id}')">通过</a> <a href="" onclick="tg('./deletezy','{$data.id}')">删除</a></td>
+                                                </tr>
+                                                {/volist}
+                                                </tbody>
+                                                
+                                            </table>
+                                            {$list|raw}
+                                        </div>
+                                        
+                                    </div>
+                                </div> <!-- end col -->
+                            </div> <!-- end row -->
+            
+                         
+
+                        </div>
+                        <!-- end container-fluid -->
+                    </div> 
+                    <!-- end page-content-wrapper -->
+                </div>
+                <!-- End Page-content -->
+
+                
+        {include file="/footer"}
+        <!-- /Right-bar -->
+
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <!-- JAVASCRIPT -->
+        <script src="/static/adassets/libs/jquery/jquery.min.js"></script>
+        <script src="/static/adassets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/static/adassets/libs/metismenu/metisMenu.min.js"></script>
+        <script src="/static/adassets/libs/simplebar/simplebar.min.js"></script>
+        <script src="/static/adassets/libs/node-waves/waves.min.js"></script>
+
+        <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
+
+        <!-- datepicker -->
+        <script src="/static/adassets/libs/air-datepicker/js/datepicker.min.js"></script>
+        <script src="/static/adassets/libs/air-datepicker/js/i18n/datepicker.en.js"></script>
+
+        <!-- apexcharts -->
+        <script src="/static/adassets/libs/apexcharts/apexcharts.min.js"></script>
+
+        <script src="/static/adassets/libs/jquery-knob/jquery.knob.min.js"></script> 
+
+        <!-- Jq vector map -->
+        <script src="/static/adassets/libs/jqvmap/jquery.vmap.min.js"></script>
+        <script src="/static/adassets/libs/jqvmap/maps/jquery.vmap.usa.js"></script>
+
+        <script src="/static/adassets/js/pages/dashboard.init.js"></script>
+
+        <script src="/static/adassets/js/app.js"></script>
+        <script>
+            function tg(type,id){
+                $.ajax({
+                    url: type,
+                    type:'post',
+                    data:{
+                        id,
+                    },
+                    success(data){
+                        if(data.code==200){
+                            $.message({
+                                    message:''+data.msg+'',
+                                    type:'error',
+                            });
+                            window.reload()
+                        }else{
+                            $.message({
+                                    message:''+data.msg+'',
+                                    type:'error',
+                            });
+                        }
+                    }
+                })
+            }
+            $(document).ready(function(){
+                $('input[name="search"]').bind("input propertychange",function(event){
+                var txt = $('input[name="search"]').val();
+                $("table tbody tr").hide().filter(":contains('" + txt + "')").show();
+                })
+                $("ul.pagination li").addClass("page-item");
+                $("ul.pagination li a").addClass("page-link");
+                var page = $("ul.pagination li.active span").text();
+                $("ul.pagination li.active").html('<a class="page-link" href="#">'+page+'<span class="sr-only">(current)</span></a>');
+                $("ul.pagination li span").addClass("page-link");
+            });
+        </script>
+
+    </body>
+</html>

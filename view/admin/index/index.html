@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+    {include file="/head" /}
+    {include file="/nav" /}
+    <!-- END Sidebar -->
+
+            <div class="main-content">
+
+                <div class="page-content">
+                    
+                    <!-- Page-Title -->
+                    <div class="page-title-box">
+                        <div class="container-fluid">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h4 class="page-title mb-1">仪表盘</h4>
+                                    <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item active">Welcome to Admin Dashboard</li>
+                                    </ol>
+                                </div>
+                                <!--<div class="col-md-4">-->
+                                <!--    <div class="float-right d-none d-md-block">-->
+                                <!--        <div class="dropdown">-->
+                                <!--            <button class="btn btn-light btn-rounded dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+                                <!--                <i class="mdi mdi-settings-outline mr-1"></i> 快速设置-->
+                                <!--            </button>-->
+                                <!--            <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated">-->
+                                                <!--<a class="dropdown-item" href="{:url('/admin/user_manage/edit')}">添加用户</a>-->
+                                                <!--<a class="dropdown-item" href="#">添加站点</a>-->
+                                <!--                <a class="dropdown-item" href="{:url('/admin/Update/index')}">系统商店</a>-->
+                                <!--                <div class="dropdown-divider"></div>-->
+                                <!--                <a class="dropdown-item" href="{:url('/admin/Update/upgrade')}">系统更新</a>-->
+                                <!--            </div>-->
+                                <!--        </div>-->
+                                <!--    </div>-->
+                                <!--</div>-->
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- end page title end breadcrumb -->
+
+                    <div class="page-content-wrapper">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-xl-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                        <div class="row">
+                                                <div class="col-6">
+                                                    <h5>欢迎回来！</h5>
+                                                    <p class="text-muted">Admin Dashboard</p>
+
+                                                    <div class="mt-4">
+                                                        <a href="https://cloudhai.cn/category/apijifei/" class="btn btn-primary btn-sm">阅读手册 <i class="mdi mdi-arrow-right ml-1"></i></a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-5 ml-auto">
+                                                    <div>
+                                                        <img src="/static/adassets/images/widget-img.png" alt="" class="img-fluid">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="header-title mb-4">销售报告</h5>
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <p class="text-muted mb-2">本月销售</p>
+                                                    <h4>{$month} 元</h4>
+                                                </div>
+                                                <div dir="ltr" class="ml-2">
+                                                    <input data-plugin="knob" data-width="56" data-height="56" data-linecap=round data-displayInput=false
+                                                    data-fgColor="#3051d3" value="{$b}" data-skin="tron" data-angleOffset="56"
+                                                    data-readOnly=true data-thickness=".17" />
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <p class="text-muted">同比变化</p>
+                                                    <h5 class="mb-0"> {$b} % <span class="font-size-14 text-muted ml-1">从上月</span></h5>
+                                                </div>
+
+                                                <div class="align-self-end ml-2">
+                                                    <a href="#" class="btn btn-primary btn-sm">查看详细</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="col-xl-8">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <form class="form-inline float-right">
+                                                <div class="input-group mb-3">
+                                                    <input type="text" class="form-control form-control-sm datepicker-here" data-range="true"  data-multiple-dates-separator=" - " data-language="en" placeholder="Select Date" />
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text"><i class="far fa-calendar font-size-12"></i></span>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <h5 class="header-title mb-4">调用使用统计</h5>
+                                            <div id="yearly-sale-chart" class="apex-charts"></div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <!-- end row -->
+
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="card">
+                                        <div class="card-header bg-transparent p-3">
+                                            <h5 class="header-title mb-0">网站统计</h5>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">
+                                                <div class="media my-2">
+                                                    
+                                                    <div class="media-body">
+                                                        <p class="text-muted mb-2">用户数</p>
+                                                        <h5 class="mb-0">{$usernum} 名</h5>
+                                                    </div>
+                                                    <div class="icons-lg ml-2 align-self-center">
+                                                        <i class="uim uim-layer-group"></i>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="media my-2">
+                                                    <div class="media-body">
+                                                        <p class="text-muted mb-2">总销售额</p>
+                                                        <h5 class="mb-0">{$payment} 元</h5>
+                                                    </div>
+                                                    <div class="icons-lg ml-2 align-self-center">
+                                                        <i class="uim uim-analytics"></i>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="media my-2">
+                                                    <div class="media-body">
+                                                        <p class="text-muted mb-2">站点数量</p>
+                                                        <h5 class="mb-0">{$zd} 个</h5>
+                                                    </div>
+                                                    <div class="icons-lg ml-2 align-self-center">
+                                                        <i class="uim uim-ruler"></i>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="media my-2">
+                                                    <div class="media-body">
+                                                        <p class="text-muted mb-2">今日调用</p>
+                                                        <h5 class="mb-0">{$num} 次</h5>
+                                                    </div>
+                                                    <div class="icons-lg ml-2 align-self-center">
+                                                        <i class="uim uim-box"></i>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="header-title mb-4">用户分析</h5>
+                                            
+                                            <div id="radial-chart" class="apex-charts"></div>
+
+                                            <div class="text-center mt-3">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <div>
+                                                            <p class="text-muted"><i class="mdi mdi-circle text-primary mr-1"></i> 包点用户</p>
+                                                            <h5> {$bdnum} 名</h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div>
+                                                            <p class="text-muted"><i class="mdi mdi-circle text-warning mr-1"></i> 包月用户</p>
+                                                            <h5> {$bynum} 名 </h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="header-title">站点信息</h5>
+                                            <p>当前版本: <small>YunHai 4.2 Pro</small></p>
+                                            <p>当前域名: <small>{$_SERVER['HTTP_HOST']}</small></p>
+                                            <p>授权状态: <small>免授权</small></p>
+                                            <p>二开购买: <small><a href="http://wpa.qq.com/msgrd?v=3&uin=2788837873&site=qq&menu=yes" target="_blank">2788837873</a></small></p>
+                                            <p>系统token: <small>{:session('jifei')}</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end row -->
+                        </div>
+                        <!-- container-fluid -->
+                    </div>
+                    <!-- end page-content-wrapper -->
+                </div>
+                <!-- End Page-content -->
+                
+        {include file="/footer"}
+        <!-- /Right-bar -->
+
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <!-- JAVASCRIPT -->
+        <script src="/static/adassets/libs/jquery/jquery.min.js"></script>
+        <script src="/static/adassets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/static/adassets/libs/metismenu/metisMenu.min.js"></script>
+        <script src="/static/adassets/libs/simplebar/simplebar.min.js"></script>
+        <script src="/static/adassets/libs/node-waves/waves.min.js"></script>
+
+        <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
+
+        <!-- datepicker -->
+        <script src="/static/adassets/libs/air-datepicker/js/datepicker.min.js"></script>
+        <script src="/static/adassets/libs/air-datepicker/js/i18n/datepicker.en.js"></script>
+
+        <!-- apexcharts -->
+        <script src="/static/adassets/libs/apexcharts/apexcharts.min.js"></script>
+
+        <script src="/static/adassets/libs/jquery-knob/jquery.knob.min.js"></script> 
+
+        <!-- Jq vector map -->
+        <script src="/static/adassets/libs/jqvmap/jquery.vmap.min.js"></script>
+        <script src="/static/adassets/libs/jqvmap/maps/jquery.vmap.usa.js"></script>
+        <script>
+        $(document).ready(function(){
+                    $.ajax({
+                        url:'/admin/index/tjnum',
+                        type:'post',
+                        data:{},
+                        success:function(data){
+                            console.log(data);
+                            var arr = [];
+                            var i = 1;
+                            for(var key in data.ph){
+                                 arr[i] = key;
+                                 i++;
+                            }
+                            tb(data,arr);
+                        }
+                    }); 
+            });
+        </script>
+        <script src="/static/adassets/js/pages/dashboard.init.js"></script>
+        <script src="/static/adassets/js/app.js"></script>
+    </body>
+</html>

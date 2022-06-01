@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+{include file="/head" /}
+{include file="/nav" /}
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+
+                    <!-- Page-Title -->
+                    <div class="page-title-box">
+                        <div class="container-fluid">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h4 class="page-title mb-1">支付设置</h4>
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">全局设置</a></li>
+                                    <li class="breadcrumb-item active">支付设置</li>
+                                    </ol>
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- end page title end breadcrumb -->
+
+                    <div class="page-content-wrapper">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+    
+                                            <h4 class="header-title">支付信息配置</h4>
+                                            <p class="card-title-desc">支付宝当面付 <code>https://opendocs.alipay.com/open/194</code> </p>
+    
+                                            <div class="form-group row">
+                                                <label for="example-text-input" class="col-md-2 col-form-label">appid</label>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" type="text" value="{$config['appId']}" name="appId">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="example-search-input" class="col-md-2 col-form-label">支付宝公钥</label>
+                                                <div class="col-md-10">
+                                                    <textarea class="form-control" rows="9" type="text" name="alipay_public_key">{$config['alipay_public_key']}</textarea>
+                                                </div> 
+                                            </div>
+                                            
+                                             <div class="form-group row">
+                                                <label for="example-search-input" class="col-md-2 col-form-label">商户私钥</label>
+                                                <div class="col-md-10">
+                                                    <textarea class="form-control" rows="9" type="text" name="rsaPrivateKey">{$config['rsaPrivateKey']}</textarea>
+                                                </div> 
+                                            </div>
+                                           <button class="btn btn-primary" id="submit" type="button">
+                                            保存
+                                         </button> 
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end col -->
+                            </div>
+                            <!-- end row -->
+    
+                        </div>
+                        <!-- end container-fluid -->
+                    </div> 
+                    <!-- end page-content-wrapper -->
+                </div>
+                <!-- End Page-content -->
+
+                
+        {include file="/footer"}
+
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <!-- JAVASCRIPT -->
+        <script src="/static/adassets/libs/jquery/jquery.min.js"></script>
+        <script src="/static/adassets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/static/adassets/libs/metismenu/metisMenu.min.js"></script>
+        <script src="/static/adassets/libs/simplebar/simplebar.min.js"></script>
+        <script src="/static/adassets/libs/node-waves/waves.min.js"></script>
+
+        <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
+
+
+        <script src="/static/adassets/js/app.js"></script>
+        <script type="text/javascript" src="/static/assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="/static/assets/js/message.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#submit").click(function(){
+                        $("#submit").html('<span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span>保存中...');
+                        var appId    = $("input[name='appId']").val();
+                        var alipay_public_key = $("textarea[name='alipay_public_key']").val();
+                        var rsaPrivateKey = $("textarea[name='rsaPrivateKey']").val();
+                        $.ajax({
+                          url:'/admin/globalsite/paySettings',
+                          type:'post',
+                          data:{
+                              appId,
+                              alipay_public_key,
+                              rsaPrivateKey,
+                          },
+                         success:function(data){
+                                $("#submit").html('保存');
+                                $.message({
+                                    message:''+data.msg+'',
+                                    type:'success',
+                                });
+                                setTimeout(function(){ window.location.href= ''; }, 2000);
+                         }
+                        });
+                });
+                
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+{include file="/head" /} 
+<body>
+{include file="/msg" /} 
+    <!-- Begin page -->
+    <div id="wrapper">
+        <!-- ========== 导航 ========== -->
+        {include file="/nav" /} 
+                <!-- Sidebar -->
+                <div class="clearfix"></div>
+            </div><!-- Sidebar -left -->
+        </div>
+        <!-- Left Sidebar End -->
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="content-page">
+            <!-- Start content -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="page-title-box">
+                        <div class="row align-items-center">
+                            <div class="col-sm-6">
+                                <h4 class="page-title">账户充值</h4>
+                            </div>
+                            
+                        </div>
+                        <!-- end row -->
+                    </div>
+                    <!-- end page-title -->
+                    <div class="row">
+                    <div class="col-lg-6">
+                                <div class="card m-b-30">
+                                    <div class="card-body">
+                                        <h4 class="mt-0 header-title">账户充值</h4>
+                                        <p class="sub-title">若充值未到账，请联系在线客服在线处理</p>
+                                            <div class="form-group">
+                                                <label>订单号码</label>
+                                                <input name="ordernum" type="text" class="form-control" value="{:date('Ymdhis')}" readonly="readonly" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>充值金额</label>
+                                                <div>
+                                                    <input name="price" type="number" class="form-control" value="10" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>支付方式</label>
+                                                <div>
+                                                    <select class="form-control" name="type">
+                                                        <option value="1">支付宝</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="pay" class="form-group" style="display: none;">
+                                                <label><font color="red">请用支付宝扫码支付</font></label>
+                                                <div>
+                                                    
+                                                </div>
+                                            </div> 
+                                            <div class="form-group">
+                                                <div>
+                                                    <button type="submit" class="btn btn-primary waves-effect waves-light cz">
+                                                        充值
+                                                    </button>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                            <div class="col-lg-6">
+                                <div class="card m-b-30">
+                                    <div class="card-body">
+                                        <h4 class="mt-0 header-title">扫码立减</h4>
+                                        <p class="sub-title">扫描二维码后通过支付宝支付可随机立减金额</p>
+                                        <img src="https://pic8.58cdn.com.cn/nowater/webim/big/n_v22472aa6719c8446ba6d5f25aeaa5b6b3.png" alt="红包码" height="280px"/>
+                                </div>
+                            </div> <!-- end col -->
+                        </div> <!-- end row --> 
+                    </div>><!-- container-fluid -->
+            </div><!-- content -->
+             {include file="/foot" /}
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Right content here -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- END wrapper -->
+
+    <!-- jQuery  -->
+    <script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/assets/js/metismenu.min.js"></script>
+    <script src="/static/assets/js/jquery.slimscroll.js"></script>
+    <script src="/static/assets/js/waves.min.js"></script>
+    <script src="https://auth.cloudhai.cn/pay.js"></script>
+    <script src="/static/assets/pages/dashboard.init.js"></script>
+
+    <!-- App js -->
+    <script src="/static/assets/js/app.js"></script>
+
+</body>
+
+</html>

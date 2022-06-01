@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+   {include file="/head" /} 
+
+    <body>
+{include file="/msg" /} 
+        <!-- Begin page -->
+        <div class="accountbg"></div>
+        <div class="home-btn d-none d-sm-block">
+                
+            </div>
+        <div class="wrapper-page">
+                <div class="card card-pages shadow-none">
+    
+                    <div class="card-body">
+                        <h5 class="font-18 text-center">找回密码</h5>
+    
+                        <form class="form-horizontal m-t-30" action="/user/login/repass" method="post">
+    
+                            <div class="form-group">
+                                <div class="col-12">
+                                        <label>账户</label>
+                                    <input name="username" class="form-control" type="text" required="" placeholder="用户名/邮箱">
+                                </div>
+                            </div>
+    
+                            <div class="form-group text-center m-t-20">
+                                <div class="col-12">
+                                    <button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">下一步</button>
+                                </div>
+                            </div>
+    
+                            <div class="form-group row m-t-30 m-b-0">
+                                <div class="col-sm-7">
+                                    <a href="/user/login/" class="text-muted"> 返回登录</a>
+                                </div>
+                                <div class="col-sm-5 text-right">
+                                    <a href="/user/login/register.html" class="text-muted">注册账户</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+    
+                </div>
+            </div>
+        <!-- END wrapper -->
+
+        <!-- jQuery  -->
+
+
+        
+    </body>
+
+</html>

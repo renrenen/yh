@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+{include file="/head" /}
+{include file="/nav" /}
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+
+                    <!-- Page-Title -->
+                    <div class="page-title-box">
+                        <div class="container-fluid">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h4 class="page-title mb-1">账户加款</h4>
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">用户管理</a></li>
+                                    <li class="breadcrumb-item active">账户加款</li>
+                                    </ol>
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- end page title end breadcrumb -->
+
+                    <div class="page-content-wrapper">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            
+                                            <h4 class="header-title">账户加款</h4>
+                                            <p class="card-title-desc">可以是负数 <code>负数是扣款</code></p>
+    
+                                            <div class="form-group row">
+                                                <label for="example-text-input" class="col-md-2 col-form-label">用户名</label>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" type="text"  name="name" value="{:input('get.user')}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="example-search-input" class="col-md-2 col-form-label">金额</label>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" type="number"  name="price">
+                                                </div> 
+                                            </div>
+
+                                           <button class="btn btn-primary" id="submit" type="button">
+                                            充值
+                                         </button> 
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end col -->
+                            </div>
+                            <!-- end row -->
+    
+                        </div>
+                        <!-- end container-fluid -->
+                    </div> 
+                    <!-- end page-content-wrapper -->
+                </div>
+                <!-- End Page-content -->
+
+                
+        {include file="/footer"}
+
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <!-- JAVASCRIPT -->
+        <script src="/static/adassets/libs/jquery/jquery.min.js"></script>
+        <script src="/static/adassets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/static/adassets/libs/metismenu/metisMenu.min.js"></script>
+        <script src="/static/adassets/libs/simplebar/simplebar.min.js"></script>
+        <script src="/static/adassets/libs/node-waves/waves.min.js"></script>
+
+        <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
+
+
+        <script src="/static/adassets/js/app.js"></script>
+        <script type="text/javascript" src="/static/assets/js/message.js"></script>
+        <script>
+            $(document).ready(function(){
+                    $("#submit").click(function(){
+                        $("#submit").html('<span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span>加载中...');
+                        var name  = $("input[name='name']").val();
+                        var price  = $("input[name='price']").val();
+                        if(price==0 || price==''){
+                            $.message({
+                                    message:'金额不能为空',
+                                    type:'error',
+                                });
+                                $("#submit").html('充值');
+                                return
+                        }
+                        if(name==0 || name==''){
+                            $.message({
+                                    message:'检查用户名',
+                                    type:'error',
+                                });
+                                 $("#submit").html('充值');
+                                return
+                        }
+                        $.ajax({
+                          url:'/admin/UserManage/increase',
+                          type:'post',
+                          data:{
+                              name:name,
+                              price:price,
+                          },
+                         success:function(data){
+                                $("#submit").html('保存');
+                                if(data.status==200){
+                                    $.message({
+                                        message:''+data.msg+'',
+                                        type:'success',
+                                    });    
+                                }else{
+                                    $.message({
+                                        message:''+data.msg+'',
+                                        type:'error',
+                                    });
+                                }
+                                //setTimeout(function(){ window.location.href= ''; }, 2000);
+                         }
+                        });
+                    });
+
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+安装说明
+此版本已不在支持二解 仅支持json对接
+如出现方法不存在 解决办法:
+在宝塔网站->设置->伪静态中(或nginx.conf里)添加下面代码
+
+location / {
+index index.html index.htm index.php;
+#autoindex on;
+if (!-e $request_filename) {
+rewrite ^(.*)$ /index.php?s=/$1 last;
+break;
+}
+}
+
+
+搭建流程
+1.导入自己的数据库,然后在程序根目录的config/database.php文件修改自己数据库信息
+2将站点php版本调成对应php7.3版本,修改运行目录为public,后访问站点是否正常
+3后台/admin 用户/user 后台账号: admin 后台密码:123456 登录后请修改！
+4.客户端修改user.php顶部api为自己的域名就行 无url提示文件在urlnull.php可自行修改
+5.由于是tp6框架对php版本要求很高 需要7.2以上 建议php7.3版本，并安装sg11扩展 数据库推荐5.6
+注意事项
+1.资源网对接默认阿里云资源通过计费授权云端返回本地无规则 需要定制或需要规则请联系 目前可以支持苹果cms的资源网！
+2.现在以支持后台一键切换模板目前本系统只有一套默认的模板 后续会推出其他模板 需要定制也可以联系
+3.商城和分站还有系统更新功能暂未完善,后续会通过zip压缩包的形式进行更新,不影响数据等
+4.客户端在public文件夹里面 yunhaikhd.zip 客户端对接和老版本一样只需要修改user的顶部的系统域名即可
+5.系统默认解析优先级为 替换系统->蓝光资源网->所设置api 此程序路径在 app/home/controller/Api.php
+会改就自己改
